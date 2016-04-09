@@ -1,0 +1,32 @@
+{
+  "name": "nigelgreenway/signa",
+  "description": "A framework agnostic token generator",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Nigel Greenway",
+      "email": "github@futurepixels.co.uk",
+      "homepage": "http://futurepixels.co.uk",
+      "role": "Developer"
+    }
+  ],
+  "autoloader": {
+    "psr-4": {
+      "Signa\\": "lib/"
+    }
+  },
+  "require": {
+    "php": "^7.0"
+  },
+  "require-dev": {
+    "phpspec/phpspec": "^2.5",
+    "squizlabs/php_codesniffer": "^2.6"
+  },
+  "config": {
+    "platform": {
+      "php": "7.0"
+    }
+  }
+}
