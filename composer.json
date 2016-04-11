@@ -15,6 +15,9 @@
   "autoload": {
     "psr-4": {
       "Signa\\": "lib/"
+    },
+    "psr-0": {
+      "": "src"
     }
   },
   "require": {

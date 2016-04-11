@@ -6,6 +6,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ### Added
 - Project skeleton
+- Tests suite configuration
 
 ### Deprecated
 - Nothing
