@@ -17,9 +17,25 @@ $ composer require nigelgreenway/signa
 
 ## Usage
 
-``` php
-$skeleton = new League\Skeleton();
-echo $skeleton->echoPhrase('Hello, League!');
+```php
+$tokenGenerator = \Signa\TokenGenerator('s0m3-s3cur3-k3y');
+
+$secureKey = $tokenGenerator->secureToken(
+    [
+        'user_name' => 'Scooby Doo',
+        'age'       = 7,
+    ],
+    new \DateTimeImmutable('+30 Days'),
+    'sha256'
+);
+
+// A secure token, for password resets and such
+echo $secureToken->value() // Some hash string
+echo $secureToken->expiresOn() // 30 days from today, aka the future
+
+// An insecure token, generally CSRF and such
+$unsecureToken = $tokenGenerator->token(36);
+$unsecureToken->value(); // Some string
 ```
 
 ## Change log

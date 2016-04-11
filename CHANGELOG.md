@@ -7,6 +7,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ### Added
 - Project skeleton
 - Tests suite configuration
+- Initial classes for token generation + phpspec tests
+- Example within the README.md
 
 ### Deprecated
 - Nothing
