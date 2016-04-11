@@ -12,7 +12,7 @@
       "role": "Developer"
     }
   ],
-  "autoloader": {
+  "autoload": {
     "psr-4": {
       "Signa\\": "lib/"
     }
