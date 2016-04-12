@@ -68,7 +68,6 @@ final class TokenGenerator implements TokenGeneratorInterface
         }
 
         return $strength/2;
-
     }
 
     /**
