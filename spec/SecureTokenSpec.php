@@ -6,18 +6,18 @@ use DateTimeImmutable;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Signa\ {
-    SecureToken,
+    ExpiringToken,
     TokenExpiryInterface,
     TokenValueInterface
 };
 
 
 /**
- * @mixin \Signa\SecureToken
+ * @mixin \Signa\ExpiringToken
  *
  * @author Nigel Greenway <github@futurepixels.co.uk>
  */
-class SecureTokenSpec extends ObjectBehavior
+class ExpiringTokenSpec extends ObjectBehavior
 {
     public function let()
     {
@@ -29,7 +29,7 @@ class SecureTokenSpec extends ObjectBehavior
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType(SecureToken::class);
+        $this->shouldHaveType(ExpiringToken::class);
         $this->shouldHaveType(TokenValueInterface::class);
         $this->shouldHaveType(TokenExpiryInterface::class);
     }

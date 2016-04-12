@@ -7,7 +7,7 @@ use PhpSpec\ {
     ObjectBehavior,
     Argument };
 use Signa\ {
-    SecureToken,
+    ExpiringToken,
     Token,
     TokenGeneratorException,
     TokenGeneratorInterface
@@ -50,11 +50,11 @@ class TokenGeneratorSpec extends ObjectBehavior
 
     public function it_should_generate_a_secure_token_with_an_expiry_date()
     {
-        $this->secureToken(['user' => 'Lang Lang', 'age' => 32], new DateTimeImmutable('+30 days'))->shouldHaveType(SecureToken::class);
+        $this->secureToken(['user' => 'Lang Lang', 'age' => 32], new DateTimeImmutable('+30 days'))->shouldHaveType(ExpiringToken::class);
     }
 
     public function it_should_generate_a_secure_token_with_no_expiry_date_set()
     {
-        $this->secureToken(['user' => 'Lang Lang', 'age' => 32])->shouldHaveType(SecureToken::class);
+        $this->secureToken(['user' => 'Lang Lang', 'age' => 32])->shouldHaveType(ExpiringToken::class);
     }
 }

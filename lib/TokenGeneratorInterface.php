@@ -20,13 +20,13 @@ interface TokenGeneratorInterface
      * @param DateTimeImmutable|null $expiresOn
      * @param string                 $algorithm
      *
-     * @return SecureToken
+     * @return ExpiringToken
      */
     public function secureToken(
         array             $data,
         DateTimeImmutable $expiresOn = null,
         string            $algorithm
-    ):SecureToken;
+    ):ExpiringToken;
 
     /**
      * @param int $strength   | Default: 16

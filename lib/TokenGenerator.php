@@ -31,10 +31,10 @@ class TokenGenerator implements TokenGeneratorInterface
         array             $data,
         DateTimeImmutable $expiresOn = null,
         string            $algorithm = 'sha256'
-    ):SecureToken {
+    ):ExpiringToken {
         $this->validateAlgorithm($algorithm);
 
-        return new SecureToken(
+        return new ExpiringToken(
             $this->generateSecureTokenValue($data, $expiresOn, $algorithm),
             $expiresOn
         );
