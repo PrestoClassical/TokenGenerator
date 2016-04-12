@@ -17,6 +17,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Key name for composer `autoload`
 - When an odd value is given as the strength, the token length would be the odd value plus one
 - Not checking if the value is `odd` before setting the remainder value
+- Missing default value on `TokenGeneratorInterface#secureToken` parameters
 
 ### Removed
 - Nothing
