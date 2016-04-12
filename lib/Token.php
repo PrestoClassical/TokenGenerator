@@ -8,7 +8,7 @@ namespace Signa;
 /**
  * @author Nigel Greenway <github@futurepixels.co.uk>
  */
-class Token implements TokenValueInterface
+final class Token implements TokenValueInterface
 {
     /** @var string $value */
     private $value;

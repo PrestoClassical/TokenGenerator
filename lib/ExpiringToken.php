@@ -10,7 +10,7 @@ use DateTimeImmutable;
 /**
  * @author Nigel Greenway <github@futurepixels.co.uk>
  */
-class ExpiringToken implements TokenValueInterface, TokenExpiryInterface
+final class ExpiringToken implements TokenValueInterface, TokenExpiryInterface
 {
     /** @var  string            $value */
     private $value;

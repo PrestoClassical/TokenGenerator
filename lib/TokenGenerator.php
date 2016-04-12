@@ -11,7 +11,7 @@ use DateTimeImmutable;
 /**
  * @author Nigel Greenway <github@futurepixels.co.uk>
  */
-class TokenGenerator implements TokenGeneratorInterface
+final class TokenGenerator implements TokenGeneratorInterface
 {
     /** @var string                 $securityKey */
     private $securityKey;
