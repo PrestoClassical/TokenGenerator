@@ -15,9 +15,11 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ### Fixed
 - Key name for composer `autoload`
+- When an odd value is given as the strength, the token length would be the odd value plus one
 
 ### Removed
 - Nothing
 
 ### Security
 - Nothing
+`

@@ -15,6 +15,8 @@ class TokenGenerator implements TokenGeneratorInterface
 {
     /** @var string                 $securityKey */
     private $securityKey;
+    /** @var  integer|null  $remainder */
+    private $remainder;
 
     /**
      * @param string $securityKey
@@ -42,11 +44,25 @@ class TokenGenerator implements TokenGeneratorInterface
     public function token(
         int $strength = 16
     ):Token {
-        $this->checkStrength($strength);
-        $strength = (int) $strength/2;
+        $strength = $this->strengthHandler($strength);
         $tokenValue = $this->generateTokenValue($strength);
 
         return new Token($tokenValue);
+    }
+
+    /**
+     * @param int $strength
+     *
+     * @return int
+     */
+    private function strengthHandler(int $strength):int
+    {
+        $this->checkStrength($strength);
+
+        $this->remainder = $strength%2;
+        $divisible = ($strength-$this->remainder) / 2;
+
+        return $divisible+$this->remainder;
     }
 
     /**
@@ -84,9 +100,17 @@ class TokenGenerator implements TokenGeneratorInterface
      */
     private function generateTokenValue(int $strength) :string
     {
-        return bin2hex(
+        if ($this->remainder === null) {
+            return bin2hex(
+                random_bytes($strength)
+            );
+        }
+
+        $value = bin2hex(
             random_bytes($strength)
         );
+
+        return substr($value, 0, -1);
     }
 
     /**
