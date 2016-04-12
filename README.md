@@ -2,6 +2,7 @@
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
+[![Build Status][ico-travis]][link-travis]
 [![Total Downloads][ico-downloads]][link-downloads]
 
 A framework agnostic token generator built for PHP 7. Uses scalar type hinting and return type hinting.
