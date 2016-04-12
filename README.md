@@ -2,10 +2,12 @@
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
+[![Build Status][ico-travis]][link-travis]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what
-PSRs you support to avoid any confusion with users and contributors.
+A framework agnostic token generator built for PHP 7. Uses scalar type hinting and return type hinting.
+
+Will generate a secure token using `hash_hmac` with access to the value and the expiry date of that token for use within your storage. An insecure token can also be generated with access to just a value, useful for a CSRF token.
 
 ## Install
 
@@ -17,9 +19,36 @@ $ composer require nigelgreenway/signa
 
 ## Usage
 
-``` php
-$skeleton = new League\Skeleton();
-echo $skeleton->echoPhrase('Hello, League!');
+```php
+<?php
+
+require __DIR__.'/vendor/autoload.php';
+
+$tokenGenerator = new \Signa\TokenGenerator('s0m3-s3cur3-k3y');
+
+$tokenWithExpiry = $tokenGenerator->tokenWithExpiry(
+    [
+        'user_name' => 'Scooby Doo',
+        'age'       => 7,
+    ],
+    new \DateTimeImmutable('+30 Days'),
+    'sha256'
+);
+
+// A secure token, for password resets and such
+echo "A secure token\n";
+echo sprintf("Value: %s\n", $tokenWithExpiry->value()); // Some hash string
+echo sprintf("Expires on: %s\n", $tokenWithExpiry->expiresOn()->format('Y-m-d H:i:s')); // 30 days from today, aka the future
+
+// An insecure token, generally CSRF and such
+echo "\nAn insecure token\n";
+$insecureToken = $tokenGenerator->token(36);
+echo sprintf("Value: %s (Length %d)\n", $insecureToken->value(), strlen($insecureToken->value())); // Some string, 36 char length
+
+echo "\nAn insecure token with odd value\n";
+$insecureToken = $tokenGenerator->token(33);
+echo sprintf("Value: %s (Length: %d)\n", $insecureToken->value(), strlen($insecureToken->value())); // Some string, 33 char length
+
 ```
 
 ## Change log
