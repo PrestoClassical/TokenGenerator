@@ -22,7 +22,7 @@ interface TokenGeneratorInterface
      *
      * @return ExpiringToken
      */
-    public function secureToken(
+    public function tokenWithExpiry(
         array             $data,
         DateTimeImmutable $expiresOn = null,
         string            $algorithm = 'sha256'

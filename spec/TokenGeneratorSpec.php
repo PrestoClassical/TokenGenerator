@@ -38,7 +38,7 @@ class TokenGeneratorSpec extends ObjectBehavior
 
     public function it_should_throw_a_TokenGeneratorException_for_an_invalid_alogorithm()
     {
-        $this->shouldThrow(TokenGeneratorException::class)->duringSecureToken(
+        $this->shouldThrow(TokenGeneratorException::class)->duringTokenWithExpiry(
             ['user' => 'Lang Lang', 'age' => 32], new DateTimeImmutable('+30 days'), 'invalidAlgo'
         );
     }
@@ -50,11 +50,11 @@ class TokenGeneratorSpec extends ObjectBehavior
 
     public function it_should_generate_a_secure_token_with_an_expiry_date()
     {
-        $this->secureToken(['user' => 'Lang Lang', 'age' => 32], new DateTimeImmutable('+30 days'))->shouldHaveType(ExpiringToken::class);
+        $this->tokenWithExpiry(['user' => 'Lang Lang', 'age' => 32], new DateTimeImmutable('+30 days'))->shouldHaveType(ExpiringToken::class);
     }
 
     public function it_should_generate_a_secure_token_with_no_expiry_date_set()
     {
-        $this->secureToken(['user' => 'Lang Lang', 'age' => 32])->shouldHaveType(ExpiringToken::class);
+        $this->tokenWithExpiry(['user' => 'Lang Lang', 'age' => 32])->shouldHaveType(ExpiringToken::class);
     }
 }

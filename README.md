@@ -25,7 +25,7 @@ require __DIR__.'/vendor/autoload.php';
 
 $tokenGenerator = new \Signa\TokenGenerator('s0m3-s3cur3-k3y');
 
-$secureToken = $tokenGenerator->secureToken(
+$tokenWithExpiry = $tokenGenerator->tokenWithExpiry(
     [
         'user_name' => 'Scooby Doo',
         'age'       => 7,
@@ -36,8 +36,8 @@ $secureToken = $tokenGenerator->secureToken(
 
 // A secure token, for password resets and such
 echo "A secure token\n";
-echo sprintf("Value: %s\n", $secureToken->value()); // Some hash string
-echo sprintf("Expires on: %s\n", $secureToken->expiresOn()->format('Y-m-d H:i:s')); // 30 days from today, aka the future
+echo sprintf("Value: %s\n", $tokenWithExpiry->value()); // Some hash string
+echo sprintf("Expires on: %s\n", $tokenWithExpiry->expiresOn()->format('Y-m-d H:i:s')); // 30 days from today, aka the future
 
 // An insecure token, generally CSRF and such
 echo "\nAn insecure token\n";
