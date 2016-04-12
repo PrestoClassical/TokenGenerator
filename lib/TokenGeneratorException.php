@@ -7,7 +7,6 @@ namespace Signa;
 
 use RuntimeException;
 
-
 /**
  * @author Nigel Greenway <nigel.greenway@prestoclassical.co.uk>
  */
