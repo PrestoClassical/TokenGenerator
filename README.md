@@ -18,24 +18,35 @@ $ composer require nigelgreenway/signa
 ## Usage
 
 ```php
-$tokenGenerator = \Signa\TokenGenerator('s0m3-s3cur3-k3y');
+<?php
 
-$secureKey = $tokenGenerator->secureToken(
+require __DIR__.'/vendor/autoload.php';
+
+$tokenGenerator = new \Signa\TokenGenerator('s0m3-s3cur3-k3y');
+
+$secureToken = $tokenGenerator->secureToken(
     [
         'user_name' => 'Scooby Doo',
-        'age'       = 7,
+        'age'       => 7,
     ],
     new \DateTimeImmutable('+30 Days'),
     'sha256'
 );
 
 // A secure token, for password resets and such
-echo $secureToken->value() // Some hash string
-echo $secureToken->expiresOn() // 30 days from today, aka the future
+echo "A secure token\n";
+echo sprintf("Value: %s\n", $secureToken->value()); // Some hash string
+echo sprintf("Expires on: %s\n", $secureToken->expiresOn()->format('Y-m-d H:i:s')); // 30 days from today, aka the future
 
 // An insecure token, generally CSRF and such
-$unsecureToken = $tokenGenerator->token(36);
-$unsecureToken->value(); // Some string
+echo "\nAn insecure token\n";
+$insecureToken = $tokenGenerator->token(36);
+echo sprintf("Value: %s (Length %d)\n", $insecureToken->value(), strlen($insecureToken->value())); // Some string, 36 char length
+
+echo "\nAn insecure token with odd value\n";
+$insecureToken = $tokenGenerator->token(33);
+echo sprintf("Value: %s (Length: %d)\n", $insecureToken->value(), strlen($insecureToken->value())); // Some string, 33 char length
+
 ```
 
 ## Change log
