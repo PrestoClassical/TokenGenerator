@@ -59,10 +59,16 @@ class TokenGenerator implements TokenGeneratorInterface
     {
         $this->checkStrength($strength);
 
-        $this->remainder = $strength%2;
-        $divisible = ($strength-$this->remainder) / 2;
+        // Checks if the strength is an odd value
+        if ($strength%2 === 1) {
+            $this->remainder = $strength%2;
+            $divisible = ($strength-$this->remainder) / 2;
 
-        return $divisible+$this->remainder;
+            return $divisible+$this->remainder;
+        }
+
+        return $strength/2;
+
     }
 
     /**
