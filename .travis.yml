@@ -9,4 +9,4 @@ before_script:
 
 script:
   - ./vendor/bin/phpspec run
-  - ./vendor/bin/phpcs src --standard=psr2
+  - ./vendor/bin/phpcs lib --standard=psr2
