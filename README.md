@@ -4,8 +4,9 @@
 [![Software License][ico-license]](LICENSE.md)
 [![Total Downloads][ico-downloads]][link-downloads]
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what
-PSRs you support to avoid any confusion with users and contributors.
+A framework agnostic token generator built for PHP 7. Uses scalar type hinting and return type hinting.
+
+Will generate a secure token using `hash_hmac` with access to the value and the expiry date of that token for use within your storage. An insecure token can also be generated with access to just a value, useful for a CSRF token.
 
 ## Install
 
