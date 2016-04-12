@@ -7,7 +7,6 @@ namespace Signa;
 
 use DateTimeImmutable;
 
-
 /**
  * @author Nigel Greenway <github@futurepixels.co.uk>
  */
@@ -128,7 +127,7 @@ final class TokenGenerator implements TokenGeneratorInterface
     private function generateSecureTokenValue(
         array             $data,
         DateTimeImmutable $expiresOn = null,
-        string            $algorithm
+        string            $algorithm = 'sha256'
     ):string {
 
         if ($expiresOn instanceof DateTimeImmutable) {
